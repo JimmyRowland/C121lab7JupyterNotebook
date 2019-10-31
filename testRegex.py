@@ -5,10 +5,9 @@ def test_string_list(string_list, regex_string):
     result = []
     regex = re.compile(regex_string)
     for should_accept in string_list:
-        should_accept = should_accept.replace('$','\$')
         match = regex.match(should_accept)
         result.append("{}{}".format("<font color = green >ACCEPT: " if match else "<font color = red>REJECT: ",
-                                    should_accept + "</font>"))
+                                    should_accept.replace('$','\$') + "</font>"))
     return "<br/>".join(result)
 
 
